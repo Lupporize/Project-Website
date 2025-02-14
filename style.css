@@ -1,6 +1,7 @@
 body {
+    background-color: rgb(23, 23, 83);
     font-family: Arial, sans-serif;
-    text-align: center; color: rgb(46, 22, 151);
+    text-align: center; color: rgb(40, 192, 212);
 }
 
 #chatbox {
