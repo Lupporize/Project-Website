@@ -5,9 +5,210 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>INFORMASI MATEMATIKA</title>
     <link rel="stylesheet" href="style.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #111;
+            color: white;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #000000;
+            padding: 1rem;
+        }
+
+        .navbar .logo a {
+            color: white;
+            text-decoration: none;
+            font-size: 1.5rem;
+        }
+
+        .nav-links {
+            list-style-type: none;
+            display: flex;
+        }
+
+        .nav-links li {
+            margin: 0 15px;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 1rem;
+        }
+
+        .nav-links a:hover {
+            text-decoration: underline;
+        }
+
+        .menu-toggle {
+            display: none;
+            font-size: 2rem;
+            color: white;
+            cursor: pointer;
+        }
+
+        @media screen and (max-width: 768px) {
+            .nav-links {
+                display: none;
+                width: 100%;
+                flex-direction: column;
+                align-items: center;
+                background-color: #333;
+                position: absolute;
+                top: 60px;
+                left: 0;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .nav-links li {
+                margin: 15px 0;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+        }
+
+        .kategori {
+            margin: 20px;
+        }
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            padding: 40px;
+        }
+
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+            padding: 40px;
+        }
+
+        .pdf-preview {
+            width: 300px;
+            border: 1px solid #444;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1);
+            overflow: hidden;
+            background-color: #111;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .pdf-preview:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 16px rgba(255, 255, 255, 0.2);
+        }
+
+        .pdf-preview iframe {
+            width: 100%;
+            height: 400px;
+            border: none;
+        }
+
+        .pdf-preview .info {
+            padding: 15px;
+            text-align: center;
+        }
+
+        .pdf-preview .info h3 {
+            margin: 10px 0;
+            font-size: 18px;
+            color: #fff;
+        }
+
+        .pdf-preview .info a {
+            color: #4CAF50;
+            text-decoration: none;
+            font-weight: bold;
+            background-color: #333;
+            padding: 10px 15px;
+            border-radius: 4px;
+            display: inline-block;
+        }
+
+        .pdf-preview .info a:hover {
+            background-color: #4CAF50;
+            color: #000;
+            text-decoration: none;
+        }
+
+        #chatbox {
+            margin-top: 30px;
+            padding: 20px;
+            background-color: #222;
+            border-radius: 10px;
+            display: inline-block;
+        }
+    </style>
 </head>
 <body>
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <a href="#">Hansite</a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#">Home</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Services</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+            <div class="menu-toggle" id="mobile-menu">
+                <span>&#9776;</span>
+            </div>
+        </nav>
+    </header>
+    
     <h1>Selamat Datang di Website Informasi</h1>
+    <section class="kategori">
+        <h2>Aritmatika</h2>
+        <div class="grid-container">
+            <div class="container">
+                <div class="pdf-preview">
+                    <iframe src="https://ambisikita.vercel.app/static/pdfs/teoribil(1).pdf"></iframe>
+                    <div class="info">
+                        <h3>Teori Bilangan part 1</h3>
+                        <a href="https://ambisikita.vercel.app/static/pdfs/teoribil(1).pdf" target="_blank">Baca</a>
+                    </div>
+                </div>
+                <div class="pdf-preview">
+                    <iframe src="https://ambisikita.vercel.app/static/pdfs/teoribil(2).pdf"></iframe>
+                    <div class="info">
+                        <h3>Teori Bilangan part 2</h3>
+                        <a href="https://ambisikita.vercel.app/static/pdfs/teoribil(2).pdf " target="_blank">Baca</a>
+                    </div>
+                </div>
+                <div class="pdf-preview">
+                    <iframe src="https://ambisikita.vercel.app/static/pdfs/teoribil(3).pdf"></iframe>
+                    <div class="info">
+                        <h3>Teori Bilangan part 3</h3>
+                        <a href="https://ambisikita.vercel.app/static/pdfs/teoribil(3).pdf" target="_blank">Baca</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <h3>Operasi Logika</h3>
+    </section>
+    
     <div id="chatbox">
         <p>Bot: Halo! Tanyakan sesuatu.</p>
     </div>
@@ -15,5 +216,13 @@
     <button onclick="sendMessage()">Kirim</button>
 
     <script src="script.js"></script>
+    <script>
+        const mobileMenu = document.getElementById('mobile-menu');
+        const navLinks = document.querySelector('.nav-links');
+
+        mobileMenu.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+    </script>
 </body>
 </html>
